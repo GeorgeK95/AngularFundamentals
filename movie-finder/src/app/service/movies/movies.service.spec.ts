@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MoviesService } from './service/movies.service';
+import { MoviesService } from './movies.service';
 
 describe('MoviesService', () => {
   beforeEach(() => {

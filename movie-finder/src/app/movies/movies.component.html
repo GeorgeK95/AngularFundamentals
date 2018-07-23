@@ -3,14 +3,12 @@
     <div class="col-lg-12">
       <div class="bs-component">
         <div class="jumbotron">
-          <h1 class="display-3">Hello, world!</h1>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </p>
+          <h1 class="display-3">Find a movie</h1>
+          <p class="lead">Search for movie using the form below.</p>
+          <form action="" class="form-group">
+            <input type="text" class="form-control"/>
+            <button class="btn-primary mt-3">Search</button>
+          </form>
         </div>
       </div>
     </div>
@@ -28,7 +26,7 @@
           <img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
           <h4>{{movie.title}}</h4>
           <p>{{movie.release_date}}</p>
-          <p><a class="btn btn-default" href="#">View Details</a></p>
+          <p><a class="btn btn-default" href="/movie/{{movie.id}}">View Details</a></p>
         </div>
       </div>
     </div>
@@ -46,7 +44,45 @@
           <img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
           <h4>{{movie.title}}</h4>
           <p>{{movie.release_date}}</p>
-          <p><a class="btn btn-default" href="#">View Details</a></p>
+          <p>
+            <a routerLink="/movie/{{movie.id}}">View Details</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Kids</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div *ngFor="let movie of kids;let i=index" class="col-md-2">
+        <div *ngIf="i < 6">
+          <img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+          <h4>{{movie.title}}</h4>
+          <p>{{movie.release_date}}</p>
+          <p><a class="btn btn-default" href="/movie/{{movie.id}}">View Details</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Best Dramas</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div *ngFor="let movie of dramas;let i=index" class="col-md-2">
+        <div *ngIf="i < 6">
+          <img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+          <h4>{{movie.title}}</h4>
+          <p>{{movie.release_date}}</p>
+          <p><a class="btn btn-default" href="/movie/{{movie.id}}">View Details</a></p>
         </div>
       </div>
     </div>
