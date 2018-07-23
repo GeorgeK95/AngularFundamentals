@@ -1,0 +1,44 @@
+import {Watermelon} from "./Watermelon";
+import {Firemelon} from "./Firemelon";
+import {Earthmelon} from "./Earthmelon";
+import {Airmelon} from "./Airmelon";
+import {Melolemonmelon} from "./Melolemonmelon";
+
+const watermelon = new Watermelon(12.5, "Kingsize");
+const firemelon = new Firemelon(2, "firemelon");
+const earthmelon = new Earthmelon(3, "earthmelon");
+const airmelon = new Airmelon(4, "airmelon");
+const melolemonmelon = new Melolemonmelon(13, "Kingsize");
+
+console.log(watermelon.toString());
+console.log('_______________________________________________________');
+console.log(firemelon.toString());
+console.log('_______________________________________________________');
+console.log(earthmelon.toString());
+console.log('_______________________________________________________');
+console.log(airmelon.toString());
+console.log('_______________________________________________________');
+
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
+console.log('_______________________________________________________');
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
+console.log('_______________________________________________________');
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
+console.log('_______________________________________________________');
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
+console.log('_______________________________________________________');
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
+console.log('_______________________________________________________');
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
+console.log('_______________________________________________________');
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
+console.log('_______________________________________________________');
+console.log(melolemonmelon.toString());
+melolemonmelon.morph();
