@@ -1,0 +1,17 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="bs-component">
+        <div class="jumbotron">
+          <h1 class="display-3">Find a movie</h1>
+          <p class="lead">Search for movie using the form below.</p>
+
+          <form #form="ngForm" (submit)="search(form.value)">
+            <input type="text" class="form-control" name="search" ngModel>
+            <button type="sumbit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

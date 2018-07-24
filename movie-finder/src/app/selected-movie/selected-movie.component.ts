@@ -9,9 +9,6 @@ import {MovieService} from '../service/movie/movie.service';
 })
 export class SelectedMovieComponent implements OnInit {
 
-  readonly movieDbUrl = 'https://api.themoviedb.org/3/';
-  readonly apiKey = '?api_key=f33fcc35393dcb41a6448a9dbc32f6dd';
-
   selectedMovie: Object;
 
   constructor(private route: ActivatedRoute, private service: MovieService) {
@@ -20,10 +17,8 @@ export class SelectedMovieComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const movieId = params['id'];
-      const movieByIdUrl = `movie/${movieId}`;
-      const finalMovieUrl = `${this.movieDbUrl}${movieByIdUrl}${this.apiKey}`;
       this.service
-        .getMovie(finalMovieUrl)
+        .getMovie(movieId)
         .subscribe(movie => {
           this.selectedMovie = movie;
         });

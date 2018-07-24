@@ -7,10 +7,14 @@ import {HttpClient} from '@angular/common/http';
 })
 export class MovieService {
 
+  readonly movieDbUrl = 'https://api.themoviedb.org/3/movie/';
+  readonly apiKey = '?api_key=f33fcc35393dcb41a6448a9dbc32f6dd';
+
   constructor(private httpClient: HttpClient) {
   }
 
-  getMovie(movieByIdUrl) {
-    return this.httpClient.get(movieByIdUrl);
+  getMovie(movieId) {
+    const finalMovieUrl = `${this.movieDbUrl}${movieId}${this.apiKey}`;
+    return this.httpClient.get(finalMovieUrl);
   }
 }

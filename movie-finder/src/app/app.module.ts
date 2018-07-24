@@ -9,6 +9,8 @@ import {MoviesService} from './service/movies/movies.service';
 import {HttpClientModule} from '@angular/common/http';
 import {MovieComponent} from './movie/movie.component';
 import {SelectedMovieComponent} from './selected-movie/selected-movie.component';
+import {FormsModule} from '@angular/forms';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,11 @@ import {SelectedMovieComponent} from './selected-movie/selected-movie.component'
     NavigationComponent,
     MovieComponent,
     SelectedMovieComponent,
-    SelectedMovieComponent
+    SelectedMovieComponent,
+    FormComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, AppRouter
+    BrowserModule, HttpClientModule, AppRouter, FormsModule
   ],
   providers: [MoviesService],
   bootstrap: [AppComponent]

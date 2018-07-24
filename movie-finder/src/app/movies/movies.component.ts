@@ -24,6 +24,9 @@ export class MoviesComponent implements OnInit {
   kids: Object;
   dramas: Object;
 
+  foundSearchedMovies: Object;
+  searchedFor: string;
+
   constructor(private service: MoviesService) {
   }
 
@@ -50,4 +53,11 @@ export class MoviesComponent implements OnInit {
       });
   }
 
+  onFoundMovies(foundSearchedMovies: any) {
+    this.foundSearchedMovies = foundSearchedMovies;
+  }
+
+  onSearchedFor(searchedFor: string) {
+    this.searchedFor = searchedFor;
+  }
 }
