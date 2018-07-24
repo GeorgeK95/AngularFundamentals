@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {MoviesService} from '../service/movies/movies.service';
 
 @Component({
@@ -30,22 +29,22 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit() {
     this.service
-      .getPopular(this.popularUrl)
+      .makeRequest(this.popularUrl)
       .subscribe(res => {
         this.popular = res.results;
       });
     this.service
-      .getPopular(this.theatresUrl)
+      .makeRequest(this.theatresUrl)
       .subscribe(res => {
         this.theatres = res.results;
       });
     this.service
-      .getPopular(this.kidsUrl)
+      .makeRequest(this.kidsUrl)
       .subscribe(res => {
         this.kids = res.results;
       });
     this.service
-      .getPopular(this.dramaUrl)
+      .makeRequest(this.dramaUrl)
       .subscribe(res => {
         this.dramas = res.results;
       });

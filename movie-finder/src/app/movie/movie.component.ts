@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MovieService} from '../service/movie/movie.service';
 
@@ -9,26 +9,12 @@ import {MovieService} from '../service/movie/movie.service';
 })
 export class MovieComponent implements OnInit {
 
-  readonly movieDbUrl = 'https://api.themoviedb.org/3/';
-  readonly apiKey = '?api_key=f33fcc35393dcb41a6448a9dbc32f6dd';
+  @Input('movie') movie: Object;
 
-  movie: Object;
-
-  constructor(private route: ActivatedRoute, private service: MovieService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      const movieId = params['id'];
-      const movieByIdUrl = `movie/${movieId}`;
-      const finalMovieUrl = `${this.movieDbUrl}${movieByIdUrl}${this.apiKey}`;
-      this.service
-        .getMovie(finalMovieUrl)
-        .subscribe(movie => {
-          this.movie = movie;
-        });
-    });
-
   }
 
 }

@@ -8,13 +8,16 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {MoviesService} from './service/movies/movies.service';
 import {HttpClientModule} from '@angular/common/http';
 import {MovieComponent} from './movie/movie.component';
+import {SelectedMovieComponent} from './selected-movie/selected-movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     NavigationComponent,
-    MovieComponent
+    MovieComponent,
+    SelectedMovieComponent,
+    SelectedMovieComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRouter

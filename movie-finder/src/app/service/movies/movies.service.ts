@@ -9,7 +9,7 @@ export class MoviesService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getPopular(popularUrl) {
-    return this.httpClient.get(popularUrl);
+  makeRequest(requestUrl) {
+    return this.httpClient.get(requestUrl);
   }
 }
