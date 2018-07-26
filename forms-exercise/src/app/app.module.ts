@@ -9,6 +9,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import {FormsModule} from '@angular/forms';
 import {AppRouter} from './app.router';
+import { ProtectedComponent } from './protected/protected.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {AppRouter} from './app.router';
     NavigationComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRouter, FormsModule

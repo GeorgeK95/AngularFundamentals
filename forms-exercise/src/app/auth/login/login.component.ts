@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../service/auth.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Login} from '../../model/Login';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,10 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  readonly AUTH_TOKEN = 'AUTH_TOKEN';
+  readonly AUTH_TOKEN = 'authtoken';
   readonly KMD = '_kmd';
-  readonly USERNAME = 'USERNAME';
-  readonly HOME_URL = '/home';
+  readonly USERNAME = 'username';
+  readonly HOME_URL = '/';
   private loginForm: FormGroup;
 
   constructor(private service: AuthService, private router: Router) {
@@ -23,11 +24,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onLogin(data) {
-    // this.service.login()
-    this.service.authToken = data[this.KMD][this.AUTH_TOKEN];
-    localStorage.setItem('AUTH_TOKEN', data[this.USERNAME]);
-    this.router.navigate([this.HOME_URL]);
+  onLogin(data: Login) {
+    this.service.login(data)
+      .subscribe(res => {
+        this.service.authToken = res[this.KMD][this.AUTH_TOKEN];
+        localStorage.setItem(this.AUTH_TOKEN, res[this.KMD][this.AUTH_TOKEN]);
+        this.router.navigate([this.HOME_URL]);
+      });
   }
 
   ngOnInit() {

@@ -8,8 +8,7 @@ import {Register} from '../model/Register';
 })
 export class AuthService {
 
-  readonly AUTH_TOKEN = 'AUTH_TOKEN';
-  private _authToken: string;
+  readonly AUTH_TOKEN = 'authtoken';
   readonly appKey = 'kid_ByPIO8U4m'; // APP KEY HERE;
   readonly appSecret = '76db300b067e4b42b8747b04512bbd3c'; // APP SECRET HERE;
   readonly registerUrl = `https://baas.kinvey.com/user/${this.appKey}`;
@@ -22,16 +21,12 @@ export class AuthService {
     'Authorization': `Basic ${btoa(`${this.appKey}:${this.appSecret}`)}`,
     'Content-Type': 'application/json'
   };
-  readonly KINVEY_TYPE_HEADERS = {
-    'Authorization': `Kinvey ${localStorage.getItem('AUTH_TOKEN')}`,
-    'Content-Type': 'application/json'
-  };
+  private _authToken: string;
 
   constructor(private httpClient: HttpClient) {
   }
 
   register(registerModel: Register) {
-    console.log(registerModel)
     return this.httpClient.post(
       this.registerUrl,
       JSON.stringify(registerModel),
@@ -42,7 +37,6 @@ export class AuthService {
   }
 
   login(loginModel: Login) {
-    console.log(loginModel)
     return this.httpClient.post(
       this.loginUrl,
       JSON.stringify(loginModel),
@@ -63,7 +57,19 @@ export class AuthService {
   }
 
   checkIfLoggedIn() {
-    return this._authToken === localStorage.getItem(this.AUTH_TOKEN);
+    return this.authToken === localStorage.getItem(this.AUTH_TOKEN);
+  }
+
+  private createAuthHeaders(type: string): HttpHeaders {
+    if (type === this.TYPE_BASIC) {
+      return new HttpHeaders(this.BASIC_TYPE_HEADERS);
+    } else {
+      const KINVEY_TYPE_HEADERS = {
+        'Authorization': `Kinvey ${localStorage.getItem('authtoken')}`,
+        'Content-Type': 'application/json'
+      };
+      return new HttpHeaders(KINVEY_TYPE_HEADERS);
+    }
   }
 
   get authToken(): string {
@@ -72,13 +78,5 @@ export class AuthService {
 
   set authToken(value: string) {
     this._authToken = value;
-  }
-
-  private createAuthHeaders(type: string): HttpHeaders {
-    if (type === this.TYPE_BASIC) {
-      return new HttpHeaders(this.BASIC_TYPE_HEADERS);
-    } else {
-      return new HttpHeaders(this.KINVEY_TYPE_HEADERS);
-    }
   }
 }

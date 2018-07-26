@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   readonly AUTH_TOKEN = 'AUTH_TOKEN';
   readonly KMD = '_kmd';
   readonly USERNAME = 'USERNAME';
-  readonly HOME_URL = '/home';
+  readonly HOME_URL = '/';
   private registerForm: FormGroup;
 
   constructor(private service: AuthService, private router: Router) {
@@ -32,8 +32,7 @@ export class RegisterComponent implements OnInit {
   onRegister(data: Register) {
     this.service.register(data)
       .subscribe(res => {
-        console.log(res);
-        console.log(data);
+        this.router.navigate([this.HOME_URL]);
       });
   }
 
