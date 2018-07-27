@@ -15,13 +15,9 @@ export class LoginComponent implements OnInit {
   readonly KMD = '_kmd';
   readonly USERNAME = 'username';
   readonly HOME_URL = '/';
-  private loginForm: FormGroup;
+  private login: Login;
 
   constructor(private service: AuthService, private router: Router) {
-    this.loginForm = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl('')
-    });
   }
 
   onLogin(data: Login) {
@@ -34,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.login = new Login('', '');
   }
 
 }

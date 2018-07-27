@@ -15,28 +15,20 @@ export class RegisterComponent implements OnInit {
   readonly KMD = '_kmd';
   readonly USERNAME = 'USERNAME';
   readonly HOME_URL = '/';
-  private registerForm: FormGroup;
+  private register: Register;
 
   constructor(private service: AuthService, private router: Router) {
-    this.registerForm = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl(''),
-      confirm: new FormControl(''),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl(''),
-      age: new FormControl('')
-    });
   }
 
-  onRegister(data: Register) {
-    this.service.register(data)
-      .subscribe(res => {
+  onRegister() {
+    this.service.register(this.register)
+      .subscribe(() => {
         this.router.navigate([this.HOME_URL]);
       });
   }
 
   ngOnInit() {
+    this.register = new Register('', '', '', '', '');
   }
 
 }
