@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SignUpModel } from '../models/signup.model';
-import { AuthService } from '../auth.service';
+import {Component, OnInit} from '@angular/core';
+import {SignUpModel} from '../models/signup.model';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,10 +8,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  model : SignUpModel;
+  model: SignUpModel;
 
-  constructor(private authService : AuthService) { 
-    this.model = new SignUpModel("", "", "");
+  constructor(private authService: AuthService) {
+    this.model = new SignUpModel('', '', '');
   }
 
   ngOnInit() {

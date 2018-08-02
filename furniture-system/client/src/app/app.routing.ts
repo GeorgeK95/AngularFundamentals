@@ -21,7 +21,7 @@ const routes: Routes = [
       {path: 'create', component: CreateFurnitureComponent, canActivate: [AuthGuard]},
       {path: 'all', component: AllFurnitureComponent},
       {path: 'mine', component: MyFurnitureComponent, canActivate: [AuthGuard]},
-      {path: 'details/:id', component: FurnitureDetailsComponent}
+      {path: 'details/:id', component: FurnitureDetailsComponent, canActivate: [AuthGuard]}
     ]
   }
 ];

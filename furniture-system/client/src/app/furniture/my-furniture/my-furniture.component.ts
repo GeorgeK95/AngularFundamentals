@@ -9,7 +9,7 @@ import {Furniture} from '../models/Furniture';
   styleUrls: ['./my-furniture.component.css']
 })
 export class MyFurnitureComponent implements OnInit {
-  private furnitures: Furniture[];
+  private furnitures: any;
 
   constructor(private furnitureService: FurnitureService) {
   }
