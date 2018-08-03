@@ -15,6 +15,7 @@ export class SignInInterceptor implements HttpInterceptor {
   readonly ALL = '/furniture/all';
   readonly DETAILS = 'details';
   readonly DELETE = 'delete';
+  readonly EDIT = 'edit';
   readonly MY_FURNITURE_URL = '/furniture/mine';
   readonly ALL_URL = '/all';
   readonly SIGN_IN_URL = '/signin';
@@ -62,6 +63,16 @@ export class SignInInterceptor implements HttpInterceptor {
                         this.toastr.error(event.body.message);
                         this.router.navigate([this.MY_FURNITURE_URL]);
                       }
+                    } else {
+                      if (event instanceof HttpResponse && req.url.includes(this.EDIT)) {
+                        this.toastr.success(event.body.message);
+                        this.router.navigate([this.ALL]);
+                      } else {
+                        if (event instanceof HttpResponse && req.url.endsWith(this.DELETE)) {
+                          this.toastr.success(event.body.message);
+                          this.router.navigate([this.ALL]);
+                        }
+                      }
                     }
                   }
                 }
@@ -73,6 +84,6 @@ export class SignInInterceptor implements HttpInterceptor {
 
   private setDataToLocalStorage(res: object): void {
     localStorage.setItem(this.AUTH_TOKEN, res[this.TOKEN]);
-    localStorage.setItem(this.USERNAME, res[this.USER][this.NAME]);
+    localStorage.setItem(this.USERNAME, JSON.stringify(res[this.USER]));
   }
 }

@@ -19,7 +19,8 @@
               </footer>
               <div class="pull-right">
                 <a routerLink="/furniture/details/{{furniture.id}}" class="btn btn-info">Details</a>
-                <a (click)="deleteFurniture(furniture.id)" class="btn btn-danger">Delete Item</a>
+                <a routerLink="/furniture/edit/{{furniture.id}}" class="btn btn-warning">Edit</a>
+                <a (click)="deleteFurniture(furniture.id)" class="btn btn-danger">Delete</a>
               </div>
             </blockquote>
           </div>

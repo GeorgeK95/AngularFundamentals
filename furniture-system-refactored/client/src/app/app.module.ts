@@ -38,7 +38,6 @@ import {GuardsModule} from './core/guards/guards.module';
   ],
   providers: [
     AuthService,
-    // FurnitureService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

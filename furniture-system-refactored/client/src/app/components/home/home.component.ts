@@ -6,6 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  readonly NAME = 'name';
   readonly USERNAME = 'username';
   username: string;
 
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     const currentUser = localStorage.getItem(this.USERNAME);
     if (currentUser) {
-      this.username = currentUser;
+      this.username = JSON.parse(localStorage.getItem(this.USERNAME)).name;
     }
   }
 

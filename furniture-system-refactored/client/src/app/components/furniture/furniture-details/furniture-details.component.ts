@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./furniture-details.component.css']
 })
 export class FurnitureDetailsComponent implements OnInit {
-  private furniture: any;
+  private furniture: FurnitureModel;
 
   constructor(private furnitureService: FurnitureService, private route: ActivatedRoute) {
   }

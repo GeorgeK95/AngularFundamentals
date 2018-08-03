@@ -12,7 +12,6 @@ export class ErrorInterceptor implements HttpInterceptor {
   readonly BAD_REQUEST_STATUS_CODE = 400;
   readonly ERROR = 'Error!';
   readonly WARNING = 'Warning!';
-  readonly UNAUTHORIZED = '401: Unauthorized';
 
   constructor(private toastr: ToastrService) {
   }

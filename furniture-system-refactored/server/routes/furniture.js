@@ -149,7 +149,7 @@ router.put('/edit/:id', authCheck, (req, res) => {
   const user = req.user.email;
   const furniture = req.body;
 
-  if (!furniture ||  !req.user.roles.includes('Admin')) {
+  if (!furniture ||  (furniture.createdBy !== user && !req.user.roles.includes('Admin'))) {
     return res.status(404).json({
       success: false,
       message: 'Furniture does not exists!'

@@ -14,7 +14,7 @@ import {FormsModule} from '@angular/forms';
     RouterModule.forChild(furnitureRoutes)
   ],
   declarations: [
-    ...furnitureComponents
+    ...furnitureComponents,
   ]
 })
 

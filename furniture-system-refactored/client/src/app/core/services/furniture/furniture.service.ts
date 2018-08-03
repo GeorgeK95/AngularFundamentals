@@ -10,7 +10,9 @@ export class FurnitureService {
   readonly findAllUrl = 'http://localhost:5000/furniture/all';
   readonly mineUrl = 'http://localhost:5000/furniture/mine';
   readonly findByIdUrl = 'http://localhost:5000/furniture/details/';
+  readonly getByIdUrl = 'http://localhost:5000/furniture/';
   readonly deleteByIdUrl = 'http://localhost:5000/furniture/delete/';
+  readonly editByIdUrl = 'http://localhost:5000/furniture/edit/';
 
   constructor(private http: HttpClient) {
   }
@@ -20,11 +22,15 @@ export class FurnitureService {
   }
 
   findAll() {
-    return this.http.get(this.findAllUrl);
+    return this.http.get<FurnitureModel[]>(this.findAllUrl);
   }
 
   findById(id: number) {
-    return this.http.get(this.findByIdUrl.concat(String(id)));
+    return this.http.get<FurnitureModel>(this.findByIdUrl.concat(String(id)));
+  }
+
+  getById(id: number) {
+    return this.http.get<FurnitureModel>(this.getByIdUrl.concat(String(id)));
   }
 
   deleteById(id: number) {
@@ -32,6 +38,10 @@ export class FurnitureService {
   }
 
   getMine() {
-    return this.http.get(this.mineUrl);
+    return this.http.get<FurnitureModel[]>(this.mineUrl);
+  }
+
+  editById(id: number, body: FurnitureModel) {
+    return this.http.put(this.editByIdUrl.concat(String(id)), body);
   }
 }

@@ -26,6 +26,18 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return localStorage.getItem(this.USERNAME) !== null;
+    return this.user !== null;
+  }
+
+  isAdmin() {
+    if (this.user) {
+      return JSON.parse(this.user).isAdmin;
+    }
+
+    return false;
+  }
+
+  get user() {
+    return localStorage.getItem(this.USERNAME);
   }
 }
